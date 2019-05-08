@@ -4,10 +4,14 @@ services:
   - docker
 
 env:
-  - BASE_VERSION=7
-  - BASE_VERSION=8
-  - BASE_VERSION=12
-  - BASE_VERSION=13
+  - BASE_VERSION=7-jdk
+  - BASE_VERSION=8-jdk
+  - BASE_VERSION=12-jdk
+  - BASE_VERSION=13-jdk
+  - BASE_VERSION=7-jre
+  - BASE_VERSION=8-jre
+  - BASE_VERSION=12-jre
+  - BASE_VERSION=13-jre
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
