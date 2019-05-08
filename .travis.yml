@@ -1,0 +1,20 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - BASE_VERSION=7
+  - BASE_VERSION=8
+  - BASE_VERSION=12
+  - BASE_VERSION=13
+
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+script:
+  - docker build -t cd2team/docker-jdk:$BASE_VERSION ./ --build-arg BASE_VERSION=$BASE_VERSION
+
+deploy:
+  provider: script
+  script: "docker push cd2team/docker-jdk:$BASE_VERSION"
